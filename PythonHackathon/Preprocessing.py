@@ -74,7 +74,7 @@ class Preprocessing():
         FA = fractional_anisotropy(tenfit.evals)
         :return:
         """
-        os.chdir(r'/Users/ayam/Documents/PythonHackathon/Data/Stroke/files')
+        os.chdir(r'/Users/ayam/Documents/PythonHackathon_Mos/Data/Stroke/files')
         dti = fsl.DTIFit()
         dti.inputs.dwi = 'DTI4D.nii'
         dti.inputs.bvecs = 'bvecs'
@@ -87,23 +87,23 @@ class Preprocessing():
 
 
 
-bvecs_file='/Users/ayam/Documents/PythonHackathon/Data/Stroke/files/bvecs'
-bvals_file='/Users/ayam/Documents/PythonHackathon/Data/Stroke/files/bvals'
-dti4d_file='/Users/ayam/Documents/PythonHackathon/Data/Stroke/files/DTI4D.nii.gz'
-mni_template='/Users/ayam/Documents/PythonHackathon/Data/mni151_2mm.nii'
+bvecs_file='/Users/ayam/Documents/PythonHackathon_Mos/Data/Stroke/files/bvecs'
+bvals_file='/Users/ayam/Documents/PythonHackathon_Mos/Data/Stroke/files/bvals'
+dti4d_file='/Users/ayam/Documents/PythonHackathon_Mos/Data/Stroke/files/DTI4D.nii.gz'
+mni_template='/Users/ayam/Documents/PythonHackathon_Mos/Data/mni151_2mm.nii'
 
 
 file=Preprocessing(bvecs_file,bvals_file,dti4d_file,mni_template)
 file.brain_segmentation()
 
 file.DTI_fit()
-#diffustion_nii='/Users/ayam/Documents/PythonHackathon/Data/Stroke/files/DTI4D.nii'
-#difusion_bval='/Users/ayam/Documents/PythonHackathon/Data/Stroke/files/bvals'
-#mask_nii='/Users/ayam/Documents/PythonHackathon/PythonHackathon/PythonHackathon/_mask.nii.gz'
+#diffustion_nii='/Users/ayam/Documents/PythonHackathon_Mos/Data/Stroke/files/DTI4D.nii'
+#difusion_bval='/Users/ayam/Documents/PythonHackathon_Mos/Data/Stroke/files/bvals'
+#mask_nii='/Users/ayam/Documents/PythonHackathon_Mos/PythonHackathon_Mos/PythonHackathon_Mos/_mask.nii.gz'
 #file.eddy_currnets_correction(diffustion_nii,difusion_bval,mask_nii)
 
-diffustion_nii='/Users/ayam/Documents/PythonHackathon/Data/Stroke/files/DTI4D.nii'
-difusion_bval='/Users/ayam/Documents/PythonHackathon/Data/Stroke/files/bvals'
-mask_nii='/Users/ayam/Documents/PythonHackathon/PythonHackathon/PythonHackathon/_mask.nii.gz'
+diffustion_nii='/Users/ayam/Documents/PythonHackathon_Mos/Data/Stroke/files/DTI4D.nii'
+difusion_bval='/Users/ayam/Documents/PythonHackathon_Mos/Data/Stroke/files/bvals'
+mask_nii='/Users/ayam/Documents/PythonHackathon_Mos/PythonHackathon_Mos/PythonHackathon_Mos/_mask.nii.gz'
 file.eddy_currnets_correction(diffustion_nii,difusion_bval,mask_nii)
 

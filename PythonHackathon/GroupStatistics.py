@@ -66,7 +66,7 @@ class GroupStatistics():
         nib.save(self.data_std_img, 'data_std.nii.gz')
 
 
-data_folder=r'/Users/ayam/Documents/PythonHackathon/Data/HealthyControls/RawData'
+data_folder=r'/Users/ayam/Documents/PythonHackathon_Mos/Data/HealthyControls/RawData'
 a=GroupStatistics(data_folder)
 a.run()
 
