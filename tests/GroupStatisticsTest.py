@@ -1,4 +1,4 @@
-from PythonHackathon.PythonHackathon.GroupStatistics import *
+from PythonHackathon.PythonHackathon_Mos.GroupStatistics import *
 
 class TestGroupStatistics():
 
