@@ -1,0 +1,137 @@
+[
+    {
+        "group": 1,
+        "imports": [],
+        "name": "00_InitXforms",
+        "size": 1
+    },
+    {
+        "group": 1,
+        "imports": [],
+        "name": "01_MskDilate",
+        "size": 1
+    },
+    {
+        "group": 1,
+        "imports": [],
+        "name": "02_ExtractDWI",
+        "size": 1
+    },
+    {
+        "group": 1,
+        "imports": [
+            "02_ExtractDWI"
+        ],
+        "name": "03_SplitDWIs",
+        "size": 1
+    },
+    {
+        "group": 1,
+        "imports": [
+            "03_SplitDWIs",
+            "01_MskDilate"
+        ],
+        "name": "04_DWEqualize",
+        "size": 1
+    },
+    {
+        "group": 1,
+        "imports": [],
+        "name": "05_b0_avg",
+        "size": 1
+    },
+    {
+        "group": 1,
+        "imports": [
+            "05_b0_avg"
+        ],
+        "name": "06_Bias",
+        "size": 1
+    },
+    {
+        "group": 1,
+        "imports": [
+            "06_Bias"
+        ],
+        "name": "07_B0Equalize",
+        "size": 1
+    },
+    {
+        "group": 1,
+        "imports": [
+            "01_MskDilate",
+            "07_B0Equalize",
+            "00_InitXforms",
+            "04_DWEqualize"
+        ],
+        "name": "08_CoRegistration",
+        "size": 1
+    },
+    {
+        "group": 1,
+        "imports": [
+            "08_CoRegistration"
+        ],
+        "name": "09_GatherMatrices",
+        "size": 1
+    },
+    {
+        "group": 1,
+        "imports": [
+            "03_SplitDWIs",
+            "07_B0Equalize",
+            "08_CoRegistration"
+        ],
+        "name": "10_ApplyXFMs",
+        "size": 1
+    },
+    {
+        "group": 1,
+        "imports": [
+            "10_ApplyXFMs"
+        ],
+        "name": "11_RemoveNegative",
+        "size": 1
+    },
+    {
+        "group": 1,
+        "imports": [
+            "11_RemoveNegative"
+        ],
+        "name": "12_MergeDWIs",
+        "size": 1
+    },
+    {
+        "group": 1,
+        "imports": [
+            "12_MergeDWIs"
+        ],
+        "name": "13_SplitDWIs",
+        "size": 1
+    },
+    {
+        "group": 1,
+        "imports": [
+            "13_SplitDWIs",
+            "08_CoRegistration"
+        ],
+        "name": "14_ModulateDWIs",
+        "size": 1
+    },
+    {
+        "group": 1,
+        "imports": [
+            "14_ModulateDWIs"
+        ],
+        "name": "15_RemoveNegative",
+        "size": 1
+    },
+    {
+        "group": 1,
+        "imports": [
+            "15_RemoveNegative"
+        ],
+        "name": "16_MergeDWIs",
+        "size": 1
+    }
+]

@@ -1,0 +1,234 @@
+{
+    "groups": [
+        {
+            "name": "Group_00001",
+            "procs": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+            ],
+            "total": 17
+        }
+    ],
+    "links": [
+        {
+            "source": 15,
+            "target": 16,
+            "value": 1
+        },
+        {
+            "source": 8,
+            "target": 9,
+            "value": 1
+        },
+        {
+            "source": 13,
+            "target": 14,
+            "value": 1
+        },
+        {
+            "source": 8,
+            "target": 14,
+            "value": 1
+        },
+        {
+            "source": 12,
+            "target": 13,
+            "value": 1
+        },
+        {
+            "source": 14,
+            "target": 15,
+            "value": 1
+        },
+        {
+            "source": 2,
+            "target": 3,
+            "value": 1
+        },
+        {
+            "source": 6,
+            "target": 7,
+            "value": 1
+        },
+        {
+            "source": 5,
+            "target": 6,
+            "value": 1
+        },
+        {
+            "source": 1,
+            "target": 8,
+            "value": 1
+        },
+        {
+            "source": 7,
+            "target": 8,
+            "value": 1
+        },
+        {
+            "source": 0,
+            "target": 8,
+            "value": 1
+        },
+        {
+            "source": 4,
+            "target": 8,
+            "value": 1
+        },
+        {
+            "source": 3,
+            "target": 4,
+            "value": 1
+        },
+        {
+            "source": 1,
+            "target": 4,
+            "value": 1
+        },
+        {
+            "source": 3,
+            "target": 10,
+            "value": 1
+        },
+        {
+            "source": 7,
+            "target": 10,
+            "value": 1
+        },
+        {
+            "source": 8,
+            "target": 10,
+            "value": 1
+        },
+        {
+            "source": 10,
+            "target": 11,
+            "value": 1
+        },
+        {
+            "source": 11,
+            "target": 12,
+            "value": 1
+        }
+    ],
+    "maxN": 17,
+    "nodes": [
+        {
+            "group": 1,
+            "name": "0_InitXforms",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpynzq1p1b/eddy_correct/DWICoregistration/InitXforms/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpynzq1p1b/eddy_correct/DWICoregistration/InitXforms/result_InitXforms.pklz"
+        },
+        {
+            "group": 1,
+            "name": "1_MskDilate",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmp7ppwyrww/eddy_correct/DWICoregistration/MskDilate/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmp7ppwyrww/eddy_correct/DWICoregistration/MskDilate/result_MskDilate.pklz"
+        },
+        {
+            "group": 1,
+            "name": "2_ExtractDWI",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpfu_beo7f/eddy_correct/ExtractDWI/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpfu_beo7f/eddy_correct/ExtractDWI/result_ExtractDWI.pklz"
+        },
+        {
+            "group": 1,
+            "name": "3_SplitDWIs",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpmd4s9jac/eddy_correct/DWICoregistration/SplitDWIs/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpmd4s9jac/eddy_correct/DWICoregistration/SplitDWIs/result_SplitDWIs.pklz"
+        },
+        {
+            "group": 1,
+            "name": "4_DWEqualize",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmp7xsuloop/eddy_correct/DWICoregistration/DWEqualize/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmp7xsuloop/eddy_correct/DWICoregistration/DWEqualize/result_DWEqualize.pklz"
+        },
+        {
+            "group": 1,
+            "name": "5_b0_avg",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpzv0opfyb/eddy_correct/b0_avg/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpzv0opfyb/eddy_correct/b0_avg/result_b0_avg.pklz"
+        },
+        {
+            "group": 1,
+            "name": "6_Bias",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpjnh67pip/eddy_correct/DWICoregistration/Bias/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpjnh67pip/eddy_correct/DWICoregistration/Bias/result_Bias.pklz"
+        },
+        {
+            "group": 1,
+            "name": "7_B0Equalize",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmp_rk9jnc7/eddy_correct/DWICoregistration/B0Equalize/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmp_rk9jnc7/eddy_correct/DWICoregistration/B0Equalize/result_B0Equalize.pklz"
+        },
+        {
+            "group": 1,
+            "name": "8_CoRegistration",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpwx5hdl8n/eddy_correct/DWICoregistration/CoRegistration/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpwx5hdl8n/eddy_correct/DWICoregistration/CoRegistration/result_CoRegistration.pklz"
+        },
+        {
+            "group": 1,
+            "name": "9_GatherMatrices",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpxwm1sxpa/eddy_correct/GatherMatrices/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpxwm1sxpa/eddy_correct/GatherMatrices/result_GatherMatrices.pklz"
+        },
+        {
+            "group": 1,
+            "name": "10_ApplyXFMs",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpf7oxwjo4/eddy_correct/DWICoregistration/ApplyXFMs/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpf7oxwjo4/eddy_correct/DWICoregistration/ApplyXFMs/result_ApplyXFMs.pklz"
+        },
+        {
+            "group": 1,
+            "name": "11_RemoveNegative",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpugq7g702/eddy_correct/DWICoregistration/RemoveNegative/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpugq7g702/eddy_correct/DWICoregistration/RemoveNegative/result_RemoveNegative.pklz"
+        },
+        {
+            "group": 1,
+            "name": "12_MergeDWIs",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpaxhd30hh/eddy_correct/DWICoregistration/MergeDWIs/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpaxhd30hh/eddy_correct/DWICoregistration/MergeDWIs/result_MergeDWIs.pklz"
+        },
+        {
+            "group": 1,
+            "name": "13_SplitDWIs",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmps1ky7hzt/eddy_correct/SplitDWIs/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmps1ky7hzt/eddy_correct/SplitDWIs/result_SplitDWIs.pklz"
+        },
+        {
+            "group": 1,
+            "name": "14_ModulateDWIs",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpnpn6zq6y/eddy_correct/ModulateDWIs/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmpnpn6zq6y/eddy_correct/ModulateDWIs/result_ModulateDWIs.pklz"
+        },
+        {
+            "group": 1,
+            "name": "15_RemoveNegative",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmp8njlht2x/eddy_correct/RemoveNegative/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmp8njlht2x/eddy_correct/RemoveNegative/result_RemoveNegative.pklz"
+        },
+        {
+            "group": 1,
+            "name": "16_MergeDWIs",
+            "report": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmp766aq3vq/eddy_correct/MergeDWIs/_report/report.rst",
+            "result": "/var/folders/kr/dkyy5z217gq04wbwdv9x3s200000gn/T/tmp766aq3vq/eddy_correct/MergeDWIs/result_MergeDWIs.pklz"
+        }
+    ]
+}
