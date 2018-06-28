@@ -108,13 +108,12 @@ class MyApp(App):
 
     def on_analyze_pressed(self, widget):
         subject_class = SubjectAnalyzer(self.map_file, self.mean_file, self.sd_file, self.mask_file)
-        subject_data = subject_class.area_data
-        table_content = Table(subject_data).frame_to_list()
+        table_content = subject_class.table
 
         self.table = gui.Table.new_from_list(table_content, width=250, height=500, margin='10px')
         print([['Region', 'value', 'Z-score'], table_content])
         self.sub_container_left.append(self.table, key='table')
-        self.figure_analyzed = gui.Image(self.fileselectionDialog)
+        self.figure_analyzed = gui.Image(r'/res/Z_map.png',width=350, height=150, margin='10px')
 
         self.sub_container_right.append(self.figure_analyzed, key='image')
 
