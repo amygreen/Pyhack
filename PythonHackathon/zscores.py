@@ -26,44 +26,55 @@ class SubjectAnalyzer:
                     'atlas, ' if not self.is_atlas_proper else '')
 
     def load_data(self):
+        # Load nifti data of subject, mean and sd of "population" and atlas:
         self.subject_img = nib.load(self.subject_nii_path)
         self.mean_img = nib.load(self.mean_nii_path)
         self.sd_img = nib.load(self.sd_nii_path)
         self.atlas_img = nib.load(self.atlas_nii_path)
 
-        self.shape = self.subject_img.shape
-        self.is_mean_proper = self.mean_img.shape == self.shape
-        self.is_sd_proper = self.sd_img.shape == self.shape
-        self.is_atlas_proper = self.atlas_img.shape == self.shape
+        self.shape = self.subject_img.shape # get dimensions of subject's data
+        self.is_mean_proper = self.mean_img.shape == self.shape # test that the mean data is the same shape
+        self.is_sd_proper = self.sd_img.shape == self.shape # test that the sd data is the same shape
+        self.is_atlas_proper = self.atlas_img.shape == self.shape  # test that the atlas data is the same shape
 
+        # set is_data_proper to false if one of the inputs is not in the same dimensions as the subject
         self.is_data_proper = self.is_mean_proper and self.is_sd_proper and self.is_atlas_proper
 
-        self.subject_data = self.subject_img.get_data()
-        self.mean_data = self.mean_img.get_data()
-        self.sd_data = self.sd_img.get_data()
-        self.atlas_data = self.atlas_img.get_data()
+        self.subject_data = self.subject_img.get_data() # get subject data from image
+        self.mean_data = self.mean_img.get_data() # get mean data from image
+        self.sd_data = self.sd_img.get_data() # get SD data from image
+        self.atlas_data = self.atlas_img.get_data() # get atlas data from image
 
+        # set zeros values to nan for subject, mean and sd data
         self.subject_data[self.subject_data==0] = np.nan
         self.mean_data[self.mean_data == 0] = np.nan
         self.sd_data[self.sd_data == 0] = np.nan
 
 
     def calculate_zscore(self):
-        self.zscores = (self.subject_data - self.mean_data) / self.sd_data
+        '''
+        calculates the zscore for each subject voxel based on the control mean and sd
+        finds only significant voxels and saves them as "zs.nii.gz"
+        '''
+        self.zscores = (self.subject_data - self.mean_data) / self.sd_data # calculate zscores
         zscores = self.zscores
-        zscores[np.isnan(zscores)] = 0
-        self.significant_zscores = np.where(np.abs(zscores)<=1.96,np.nan,zscores)
-        self.significant_zscores_nii = nib.Nifti1Image(self.significant_zscores,self.subject_img.affine)
-        nib.save(self.significant_zscores_nii, 'zs.nii.gz')
+        zscores[np.isnan(zscores)] = 0 # replace nans with z scores temporarily
+        self.significant_zscores = np.where(np.abs(zscores)<=1.96,np.nan,zscores) # finds non significant values and replaces them with zeros for new variable
+        self.significant_zscores_nii = nib.Nifti1Image(self.significant_zscores,self.subject_img.affine) # creates nifti template
+        nib.save(self.significant_zscores_nii, 'zs.nii.gz') # save nifti template
 
     def calculate_atlas_results(self):
-        vals = np.zeros(self.atlas_data.max())
-        zs = np.zeros(self.atlas_data.max())
-        for i in range(1,self.atlas_data.max()+1):
-            vals[i-1] = np.nanmean(self.subject_data[self.atlas_data == i])
-            zs[i-1] = np.nanmean(self.zscores[self.atlas_data == i])
+        '''
+        for each area in the atlas supplied, calculate the average value and z-score
+        '''
+        vals = np.zeros(self.atlas_data.max()) # initialize values array
+        zs = np.zeros(self.atlas_data.max()) # initialize zscores array
+        for i in range(1,self.atlas_data.max()+1): # for every area
+            vals[i-1] = np.nanmean(self.subject_data[self.atlas_data == i]) # calculate mean value in area
+            zs[i-1] = np.nanmean(self.zscores[self.atlas_data == i]) # calculate mean z-score in area
 
-        vals = pd.Series(vals,index = np.arange(1,self.atlas_data.max()+1))
-        zs_s = pd.Series(zs,index = np.arange(1,self.atlas_data.max()+1))
-        self.area_data = pd.DataFrame({'Values': vals, 'Z-scores': zs_s})
-        self.area_data.index.name = 'Area'
+        vals = pd.Series(vals,index = np.arange(1,self.atlas_data.max()+1)) # create values series
+        zs_s = pd.Series(zs,index = np.arange(1,self.atlas_data.max()+1)) # create zscore series
+        self.area_data = pd.DataFrame({'Values': vals, 'Z-scores': zs_s}) # create dataframe from both
+        self.area_data.index.name = 'Area' # change index name to area
+#plotting.plot_glass_brain('zs.nii.gz',output_file='zs.png',colorbar=True,threshold=1.96,plot_abs=False,vmax=5)
