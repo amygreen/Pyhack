@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import nibabel as nib
+from nilearn import plotting
 
 class SubjectAnalyzer:
 
@@ -62,6 +63,10 @@ class SubjectAnalyzer:
         self.significant_zscores = np.where(np.abs(zscores)<=1.96,np.nan,zscores) # finds non significant values and replaces them with zeros for new variable
         self.significant_zscores_nii = nib.Nifti1Image(self.significant_zscores,self.subject_img.affine) # creates nifti template
         nib.save(self.significant_zscores_nii, 'zs.nii.gz') # save nifti template
+        zs_nii_path = self.significant_zscores_nii
+        plotting.plot_glass_brain(zs_nii_path, threshold=1.96, colorbar=True, plot_abs=False,
+                                  output_file='Z_map.png',vmax=5)
+
 
     def calculate_atlas_results(self):
         '''
@@ -77,4 +82,12 @@ class SubjectAnalyzer:
         zs_s = pd.Series(zs,index = np.arange(1,self.atlas_data.max()+1)) # create zscore series
         self.area_data = pd.DataFrame({'Values': vals, 'Z-scores': zs_s}) # create dataframe from both
         self.area_data.index.name = 'Area' # change index name to area
-#plotting.plot_glass_brain('zs.nii.gz',output_file='zs.png',colorbar=True,threshold=1.96,plot_abs=False,vmax=5)
+
+        subject_data = self.area_data
+        decimals = pd.Series([4, 2], index=['Values', 'Z-scores'])
+        subject_data = subject_data.round(decimals)
+        temp = [['Region', 'Value', 'Z-score']]
+        for row in subject_data.iterrows():
+            index, data = row
+            temp.append([index] + data.tolist())
+        self.table = temp
