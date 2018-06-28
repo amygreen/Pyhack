@@ -65,7 +65,7 @@ class SubjectAnalyzer:
         nib.save(self.significant_zscores_nii, 'zs.nii.gz') # save nifti template
         zs_nii_path = self.significant_zscores_nii
         plotting.plot_glass_brain(zs_nii_path, threshold=1.96, colorbar=True, plot_abs=False,
-                                  output_file='Z_map.png')
+                                  output_file='Z_map.png',vmax=5)
 
 
     def calculate_atlas_results(self):
