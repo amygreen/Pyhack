@@ -60,8 +60,10 @@ class SubjectAnalyzer:
         self.zscores = (self.subject_data - self.mean_data) / self.sd_data # calculate zscores
         zscores = self.zscores
         zscores[np.isnan(zscores)] = 0 # replace nans with z scores temporarily
-        self.significant_zscores = np.where(np.abs(zscores)<=1.96,np.nan,zscores) # finds non significant values and replaces them with zeros for new variable
-        self.significant_zscores_nii = nib.Nifti1Image(self.significant_zscores,self.subject_img.affine) # creates nifti template
+        # finds non significant values and replaces them with zeros for new variable:
+        self.significant_zscores = np.where(np.abs(zscores)<=1.96,np.nan,zscores)
+        # creates nifti template:
+        self.significant_zscores_nii = nib.Nifti1Image(self.significant_zscores,self.subject_img.affine)
         nib.save(self.significant_zscores_nii, 'zs.nii.gz') # save nifti template
         zs_nii_path = self.significant_zscores_nii
         plotting.plot_glass_brain(zs_nii_path, threshold=1.96, colorbar=True, plot_abs=False,
